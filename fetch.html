@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div></div>
+</body>
+<script>
+  const root = document.getElementsByTagName('div')[0];
+
+  const url = "https://pokeapi.co/api/v2/pokemon/ditto";
+
+  fetch(url)
+    .then(data => {return data.json()})
+    .then(rest=>{
+      const pokeData = rest.abilities[0].ability.name;
+      root.innerHTML = pokeData;
+    })
+</script>
+</html>
