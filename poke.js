@@ -1,5 +1,5 @@
 const http = require('http');
-const fs = require('fs');
+const https = require('https');
 
 //todo pokeapi 가져오기
 //todo server 생성
@@ -7,7 +7,17 @@ const fs = require('fs');
 
 const url = "https://pokeapi.co/api/v2/pokemon/ditto";
 
-fetch(url)
-  .then(data => {return data.json()})
-  .then(res=>{console.log(res)})
-//promise를 반환
+https.get(url,(Response)=>{
+  let data=""
+
+  Response.on("data",(chunk)=>{
+    data += chunk;
+  });
+
+  Response.on("end",()=>{
+    const result = JSON.parse(data);
+    console.log(result);
+  })
+}).on("error",(err)=>{
+  console.error("ERROR",err.message);
+})
