@@ -5,8 +5,12 @@ const returnArr = () => {
 const test = returnArr();
 console.log(test);
 
-const testTwo = test.forEach((item,index)=> {
+test.forEach((item,index)=> {
   test[index] = item + 1;
 });
 
 console.log(test);
+
+const testTwo = test.map((item)=>{
+  return item + 1;
+})
