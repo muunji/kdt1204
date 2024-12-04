@@ -1,4 +1,3 @@
-const http = require('http');
 const https = require('https');
 
 //todo pokeapi 가져오기
